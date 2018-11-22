@@ -6,11 +6,8 @@ services:
 script:
   - echo "nothing to do here"
 
-dockerhub:
+deploy:
   provider: script
   on:
     tags: true
-  script:
-    - docker build -t alexksak/fission-scrapy-env:$TRAVIS_TAG .
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push alexksak/fission-scrapy-env:$TRAVIS_TAG
+  script: docker build -t alexksak/fission-scrapy-env:$TRAVIS_TAG . && echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && docker push alexksak/fission-scrapy-env:$TRAVIS_TAG
