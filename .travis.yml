@@ -6,10 +6,9 @@ services:
 script:
   - echo "nothing to do here"
 
-deploy:
+dockerhub:
   provider: script
   on:
-    branch: master
     tags: true
   script:
     - docker build -t alexksak/fission-scrapy-env:$TRAVIS_TAG .
