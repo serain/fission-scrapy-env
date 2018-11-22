@@ -4,6 +4,7 @@ services:
   - docker
 
 script:
-  - docker build -t alexksak/fission-scrapy-env .
+  - docker build -t alexksak/fission-scrapy-env:$(git log -1 --pretty=%h) .
+  - docker tag alexksak/fission-scrapy-env:$(git log -1 --pretty=%h) alexksak/fission-scrapy-env:$(git describe --abbrev=0 --tags)
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push alexksak/fission-scrapy-env
+  - docker push alexksak/fission-scrapy-env:$(git log -1 --pretty=%h)
