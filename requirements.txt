@@ -7,3 +7,4 @@ redis
 hiredis
 gevent
 incremental==17.5.0
+scrapy==1.5.1
