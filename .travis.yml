@@ -3,6 +3,9 @@ sudo: required
 services:
   - docker
 
+script:
+  - echo "nothing to do here"
+
 deploy:
   provider: script
   on:
